@@ -1,0 +1,81 @@
+// Demo blog data for when API is not available
+export const demoBlogs = [
+    {
+        id: 1,
+        title: "Modern React Development",
+        content:
+            "React has evolved significantly over the years. With the introduction of hooks, functional components have become the standard way to write React applications. This article explores the latest patterns and best practices for building modern React applications.",
+        author: "John Doe",
+        publish_date: "2024-01-15T10:00:00Z",
+        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop",
+        likes: 42,
+        likes_n: [],
+        comment_count: 8,
+        post_views: 156,
+    },
+    {
+        id: 2,
+        title: "The Future of Web Development",
+        content:
+            "Web development is constantly evolving. From static HTML pages to dynamic Single Page Applications, the journey has been remarkable. Let's explore what the future holds for web developers and the technologies that will shape our industry.",
+        author: "Jane Smith",
+        publish_date: "2024-01-14T14:30:00Z",
+        image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop",
+        likes: 28,
+        likes_n: [],
+        comment_count: 12,
+        post_views: 89,
+    },
+    {
+        id: 3,
+        title: "JavaScript Best Practices 2024",
+        content:
+            "JavaScript continues to be one of the most popular programming languages. With new features being added regularly, it's important to stay updated with the latest best practices. This guide covers essential patterns and techniques every JavaScript developer should know.",
+        author: "Mike Johnson",
+        publish_date: "2024-01-13T09:15:00Z",
+        image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?w=400&h=300&fit=crop",
+        likes: 35,
+        likes_n: [],
+        comment_count: 6,
+        post_views: 203,
+    },
+    {
+        id: 4,
+        title: "CSS Grid vs Flexbox",
+        content:
+            "Understanding when to use CSS Grid and when to use Flexbox can be challenging for many developers. Both are powerful layout tools, but they excel in different scenarios. Let's break down the differences and help you choose the right tool for your projects.",
+        author: "Sarah Wilson",
+        publish_date: "2024-01-12T16:45:00Z",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop",
+        likes: 19,
+        likes_n: [],
+        comment_count: 4,
+        post_views: 127,
+    },
+    {
+        id: 5,
+        title: "Building Scalable Applications",
+        content:
+            "Scalability is a crucial aspect of modern web applications. As your user base grows, your application needs to handle increased load efficiently. This article discusses various strategies and architectural patterns for building scalable applications.",
+        author: "David Brown",
+        publish_date: "2024-01-11T11:20:00Z",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop",
+        likes: 51,
+        likes_n: [],
+        comment_count: 15,
+        post_views: 312,
+    },
+    {
+        id: 6,
+        title: "Introduction to TypeScript",
+        content:
+            "TypeScript brings static typing to JavaScript, making it easier to catch errors during development and improve code maintainability. This beginner-friendly guide will help you get started with TypeScript and understand its key benefits.",
+        author: "Emily Davis",
+        publish_date: "2024-01-10T13:10:00Z",
+        image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=300&fit=crop",
+        likes: 33,
+        likes_n: [],
+        comment_count: 9,
+        post_views: 178,
+    },
+];
