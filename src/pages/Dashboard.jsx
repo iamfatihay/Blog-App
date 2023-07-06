@@ -5,11 +5,12 @@ import { Grid } from '@mui/material';
 import { flexCenter } from "../styles/globalStyle";
 import BlogCard from '../components/blog/BlogCard';
 import { Helmet } from "react-helmet";
+import loadingGif from "../assets/loading1.gif";
 
 
 const Dashboard = () => {
   const { getBlogDataPublic } = useBlogCalls();
-  const { blogs } = useSelector(state => state.blog);
+  const { blogs, loading } = useSelector(state => state.blog);
 
   useEffect(() => {
     getBlogDataPublic("blogs");
@@ -22,11 +23,14 @@ const Dashboard = () => {
         <Helmet>
           <title>Dashboard</title>
         </Helmet>
-        {blogs?.map(blog => (
-          <Grid sx={{ mt: 3, mb: 3 }} item key={blog.id}>
-            <BlogCard blog={blog} />
-          </Grid>
-        ))}
+        {loading ? (
+          <img src={loadingGif} alt="loading..." style={{ height: '300px', margin: "140px" }} />
+        ) : (
+          blogs?.map(blog => (
+            <Grid sx={{ mt: 3, mb: 3 }} item key={blog.id}>
+              <BlogCard blog={blog} />
+            </Grid>
+          )))}
       </Grid>
     </div>
   )

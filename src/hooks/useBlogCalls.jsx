@@ -57,7 +57,7 @@ const useBlogCalls = () => {
     try {
       const { data } = await axiosWithPublic.get(`api/${url}/`);
       console.log(data);
-      dispatch(getSucces({ data, url }));
+      // dispatch(getSucces({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
     }
