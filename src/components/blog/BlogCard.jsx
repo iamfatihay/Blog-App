@@ -16,6 +16,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import { useNavigate } from "react-router-dom";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import useBlogCalls from '../../hooks/useBlogCalls';
+import avatar from "../../assets/avatar.png";
 
 
 export default function BlogCard({ blog }) {
@@ -46,7 +47,7 @@ export default function BlogCard({ blog }) {
             <CardHeader
                 avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe"
-                        src={currentUser ? image : <AccountCircle />}
+                        src={currentUser ? image : avatar}
                     >
                         R
                     </Avatar>

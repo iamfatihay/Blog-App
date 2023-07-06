@@ -6,15 +6,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Grid } from '@mui/material';
 import { Helmet } from "react-helmet";
-
+import avatar from "../assets/avatar.png";
 
 
 const Profile = () => {
-  const currentUser = useSelector(state => state.auth.currentUser);
-  const image = useSelector(state => state.auth.image);
-  const firstName = useSelector(state => state.auth.first_name);
-  const email = useSelector(state => state.auth.email);
-  const bio = useSelector(state => state.auth.bio);
+  const { currentUser, image, firstName, email, bio } = useSelector(state => state.auth);
 
   return (
     <Grid container
@@ -30,19 +26,19 @@ const Profile = () => {
       }}>
 
         <CardMedia
-          sx={{ objectFit: "contain" }}
+          sx={{ objectFit: "contain", height: "300px" }}
           component="img"
-          image={image}
+          image={image ? image : avatar}
           alt="image"
         />
         <CardContent sx={{ textAlign: "center" }} >
-          <Typography variant="h2" color="text.primary">
+          <Typography variant="h3" color="text.primary">
             {currentUser}
           </Typography>
-          <Typography variant="h4" color="text.primary">
+          <Typography variant="h5" color="text.primary">
             {firstName}
           </Typography>
-          <Typography variant="h4" color="text.primary">
+          <Typography variant="h5" color="text.primary">
             {email}
           </Typography>
           <Typography variant="p" color="text.primary">

@@ -8,7 +8,7 @@ const authSlice = createSlice({
     currentUserId: null,
     loading: false,
     error: false,
-    image1: "",
+    image: "",
     first_name: "",
     email: "",
     bio: "",
@@ -26,7 +26,7 @@ const authSlice = createSlice({
       state.token = payload?.key;
     },
     profileSuccess: (state, { payload }) => {
-      state.image1 = payload?.user?.image;
+      state.image = payload?.user?.image;
       state.first_name = payload?.user?.first_name;
       state.email = payload?.user?.email;
       state.bio = payload?.user?.bio;

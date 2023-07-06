@@ -12,11 +12,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import logo from "../assets/logo.gif";
-import AccountCircle from "@mui/icons-material/AccountCircle";
 import { List, ListItem } from '@mui/material';
 import useAuthCall from '../hooks/useAuthCalls';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import avatar from "../assets/avatar.png";
 
 
 function NavBar() {
@@ -158,7 +158,7 @@ function NavBar() {
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp"
-                                    src={currentUser ? image : <AccountCircle />}
+                                    src={currentUser ? image : avatar}
                                 />
                             </IconButton>
                         </Tooltip>
