@@ -93,7 +93,7 @@ Welcome to the Blog Application! This project provides a powerful platform for u
 
     - **useAuthCalls**: A custom hook that handles authentication-related API calls and state management.
     - **useAxios**: A custom hook that simplifies making HTTP requests using Axios and manages the loading and error states.
-    - **useBlogCalls**: A custom hook that encapsulates the logic for making blog-related API calls and managing the blog-related state.
+    - **useBlogCalls**: A custom hook that encapsulates the logic for making blog-related API calls and managing the blog-related states.
 
 ## Getting Started
 
