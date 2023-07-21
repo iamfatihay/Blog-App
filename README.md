@@ -89,6 +89,7 @@ Welcome to the Blog Application! This project provides a powerful platform for u
 - <span style="font-size: larger;">**Axios**</span>: A popular HTTP client for making API requests and handling responses.
 - <span style="font-size: larger;">**Tailwind CSS**</span>: A highly customizable CSS framework for creating stunning designs with minimal effort.
 - <span style="font-size: larger;">**React Router**</span>: A popular routing library for React applications, allowing for dynamic and intuitive navigation between different pages within the application.
+- <span style="font-size: larger;">**Formik and Yup**</span>: Powerful JavaScript libraries used for form management and validation. Yup is used to define validation schemas for form data, specifying the expected shape and constraints. On the other hand, Formik simplifies form state management, submission handling, and validation. Together, they ensure robust form validation and streamlined form handling for user input data.
 - <span style="font-size: larger;">**Custom Hooks**</span>: Custom hooks have been implemented to encapsulate reusable logic and improve code organization and reusability. These custom hooks include:
 
     - **useAuthCalls**: A custom hook that handles authentication-related API calls and state management.
