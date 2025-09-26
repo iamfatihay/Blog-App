@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 import Paper from "@mui/material/Paper";
-import LockIcon from "@mui/icons-material/Lock";
+// import LockIcon from "@mui/icons-material/Lock"; // Not used
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import { Formik } from "formik";
 import image from "../assets/register_img.svg";

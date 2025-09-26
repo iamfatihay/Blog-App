@@ -22,8 +22,12 @@ const LoginForm = ({
 }) => {
     const demoCredentials = [
         { email: "demo@example.com", password: "demo123", label: "Demo User" },
-        { email: "admin@blog.com", password: "admin123", label: "Admin" },
-        { email: "writer@blog.com", password: "writer123", label: "Writer" },
+        { email: "test@example.com", password: "test123", label: "Test User" },
+        {
+            email: "guest@example.com",
+            password: "guest123",
+            label: "Guest User",
+        },
     ];
 
     const handleDemoLogin = (credentials) => {
