@@ -62,13 +62,22 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                     sx={{
                         display: "flex",
                         flexDirection: "column",
-                        gap: 1,
-                        width: "350px",
-                        maxHeight: "680px",
+                        gap: 2,
+                        width: "100%",
+                        maxWidth: "500px",
+                        minWidth: "350px",
+                        maxHeight: "calc(100vh - 200px)",
+                        backgroundColor: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
+                        borderRadius: 3,
+                        p: 3,
+                        boxShadow: "0 8px 32px rgba(99, 102, 241, 0.1)",
+                        border: "1px solid rgba(99, 102, 241, 0.1)",
+                        overflow: "auto",
                     }}
                 >
                     <TextField
-                        label="Titel"
+                        label="Title"
                         name="title"
                         id="title"
                         type="text"
@@ -78,9 +87,17 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                         onBlur={handleBlur}
                         helperText={touched.title && errors.title}
                         error={touched.title && Boolean(errors.title)}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "primary.main",
+                                },
+                            },
+                        }}
                     />
                     <TextField
-                        label="Image"
+                        label="Image URL"
                         name="image"
                         id="image"
                         type="url"
@@ -90,6 +107,14 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                         onBlur={handleBlur}
                         helperText={touched.image && errors.image}
                         error={touched.image && Boolean(errors.image)}
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "primary.main",
+                                },
+                            },
+                        }}
                     />
                     <FormControl
                         variant="outlined"
@@ -143,8 +168,7 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                         )}
                     </FormControl>
                     <TextField
-                        aria-label="Content"
-                        placeholder="Content"
+                        label="Content"
                         name="content"
                         id="content"
                         value={values.content}
@@ -154,17 +178,39 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
                         helperText={touched.content && errors.content}
                         multiline
                         rows={5}
+                        variant="outlined"
                         sx={{
                             width: "100%",
                             resize: "vertical",
-                            borderRadius: "4px",
-                            fontFamily: "inherit",
-                            fontSize: "inherit",
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "primary.main",
+                                },
+                            },
                         }}
                     />
 
-                    <Button type="submit" variant="contained" size="large">
-                        Submit
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        size="large"
+                        sx={{
+                            borderRadius: 2,
+                            py: 1.5,
+                            fontWeight: 600,
+                            background:
+                                "linear-gradient(45deg, #6366f1, #ec4899)",
+                            "&:hover": {
+                                background:
+                                    "linear-gradient(45deg, #4f46e5, #db2777)",
+                                transform: "translateY(-2px)",
+                                boxShadow: "0 8px 20px rgba(99, 102, 241, 0.3)",
+                            },
+                            transition: "all 0.3s ease",
+                        }}
+                    >
+                        Create Blog Post
                     </Button>
                 </Box>
             </Form>

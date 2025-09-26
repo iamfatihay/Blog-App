@@ -3,7 +3,6 @@ import {
     Box,
     Button,
     Divider,
-    InputAdornment,
     List,
     ListItem,
     ListItemText,
@@ -73,26 +72,33 @@ const CommentForm = ({ setBlogDetail, blogDetail, id }) => {
                         display: "flex",
                         justifyContent: "center",
                         flexDirection: "column",
-                        gap: 3.8,
-                        p: 2,
+                        gap: 2,
+                        p: 3,
+                        backgroundColor: "rgba(255, 255, 255, 0.95)",
+                        backdropFilter: "blur(10px)",
+                        borderRadius: 3,
+                        boxShadow: "0 4px 20px rgba(99, 102, 241, 0.1)",
+                        border: "1px solid rgba(99, 102, 241, 0.1)",
                     }}
                 >
                     <TextField
-                        label="Comment"
+                        label="Add a comment"
                         name="content"
                         id="content"
                         type="text"
                         variant="outlined"
-                        color="success"
                         multiline
                         value={commentData}
                         onChange={(e) => setComment(e.target.value)}
-                        rows={2}
-                        placeholder="Add a comment"
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start"></InputAdornment>
-                            ),
+                        rows={3}
+                        placeholder="Share your thoughts..."
+                        sx={{
+                            "& .MuiOutlinedInput-root": {
+                                borderRadius: 2,
+                                "&:hover .MuiOutlinedInput-notchedOutline": {
+                                    borderColor: "primary.main",
+                                },
+                            },
                         }}
                     />
                     <Button
@@ -100,14 +106,18 @@ const CommentForm = ({ setBlogDetail, blogDetail, id }) => {
                         fullWidth
                         variant="contained"
                         sx={{
-                            mt: 3,
-                            mb: 2,
-                            color: "black",
-                            bgcolor: "darkgray",
+                            py: 1.5,
+                            fontWeight: 600,
+                            borderRadius: 2,
+                            background:
+                                "linear-gradient(45deg, #6366f1, #ec4899)",
                             "&:hover": {
-                                bgcolor: "secondary.main",
-                                color: "white",
+                                background:
+                                    "linear-gradient(45deg, #4f46e5, #db2777)",
+                                transform: "translateY(-2px)",
+                                boxShadow: "0 8px 20px rgba(99, 102, 241, 0.3)",
                             },
+                            transition: "all 0.3s ease",
                         }}
                     >
                         Add Comment
