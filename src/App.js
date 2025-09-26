@@ -14,24 +14,39 @@ function App() {
         palette: {
             mode: "light",
             primary: {
-                main: "#0ea5e9",
-                light: "#38bdf8",
-                dark: "#0284c7",
+                main: "#6366f1", // Indigo
+                light: "#818cf8",
+                dark: "#4f46e5",
                 contrastText: "#ffffff",
             },
             secondary: {
-                main: "#64748b",
-                light: "#94a3b8",
-                dark: "#475569",
+                main: "#ec4899", // Pink
+                light: "#f472b6",
+                dark: "#db2777",
                 contrastText: "#ffffff",
             },
             background: {
-                default: "#f8fafc",
+                default: "#fafafa",
                 paper: "#ffffff",
             },
             text: {
-                primary: "#1f2937",
-                secondary: "#6b7280",
+                primary: "#1e293b",
+                secondary: "#64748b",
+            },
+            success: {
+                main: "#10b981",
+                light: "#34d399",
+                dark: "#059669",
+            },
+            warning: {
+                main: "#f59e0b",
+                light: "#fbbf24",
+                dark: "#d97706",
+            },
+            error: {
+                main: "#ef4444",
+                light: "#f87171",
+                dark: "#dc2626",
             },
         },
         typography: {
@@ -90,7 +105,7 @@ function App() {
                 <CssBaseline />
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
-                        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+                        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50">
                             <AppRouter />
                         </div>
                     </PersistGate>

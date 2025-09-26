@@ -64,10 +64,12 @@ function NavBar() {
             position="fixed"
             elevation={0}
             sx={{
-                backgroundColor: "#ffffff",
-                borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+                backgroundColor: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(10px)",
+                borderBottom: "1px solid rgba(99, 102, 241, 0.1)",
                 transition: "all 0.3s ease",
-                boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+                boxShadow: "0 4px 20px rgba(99, 102, 241, 0.1)",
+                zIndex: 1300, // Ensure header is above content
             }}
         >
             <Container maxWidth="xl">
