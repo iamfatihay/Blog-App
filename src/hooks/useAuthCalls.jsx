@@ -26,31 +26,40 @@ const useAuthCall = () => {
         // Demo mode - check for demo credentials
         const demoCredentials = {
             "demo@example.com": {
-                token: "demo_token_123",
-                user: "Demo User",
-                first_name: "Demo",
-                last_name: "User",
-                email: "demo@example.com",
-                image: null,
-                bio: "Demo user account",
+                key: "demo_token_123",
+                user: {
+                    id: 1,
+                    username: "Demo User",
+                    first_name: "Demo",
+                    last_name: "User",
+                    email: "demo@example.com",
+                    image: null,
+                    bio: "Demo user account",
+                },
             },
-            "admin@blog.com": {
-                token: "admin_token_456",
-                user: "Admin User",
-                first_name: "Admin",
-                last_name: "User",
-                email: "admin@blog.com",
-                image: null,
-                bio: "Administrator account",
+            "test@example.com": {
+                key: "test_token_456",
+                user: {
+                    id: 2,
+                    username: "Test User",
+                    first_name: "Test",
+                    last_name: "User",
+                    email: "test@example.com",
+                    image: null,
+                    bio: "Test user account",
+                },
             },
-            "writer@blog.com": {
-                token: "writer_token_789",
-                user: "Writer User",
-                first_name: "Writer",
-                last_name: "User",
-                email: "writer@blog.com",
-                image: null,
-                bio: "Content writer account",
+            "guest@example.com": {
+                key: "guest_token_789",
+                user: {
+                    id: 3,
+                    username: "Guest User",
+                    first_name: "Guest",
+                    last_name: "User",
+                    email: "guest@example.com",
+                    image: null,
+                    bio: "Guest user account",
+                },
             },
         };
 
@@ -59,9 +68,9 @@ const useAuthCall = () => {
             (demoCredentials[userInfo.email] &&
                 userInfo.password === "demo123") ||
             (demoCredentials[userInfo.email] &&
-                userInfo.password === "admin123") ||
+                userInfo.password === "test123") ||
             (demoCredentials[userInfo.email] &&
-                userInfo.password === "writer123")
+                userInfo.password === "guest123")
         ) {
             const data = demoCredentials[userInfo.email];
             dispatch(loginSuccess(data));
@@ -91,6 +100,20 @@ const useAuthCall = () => {
 
     const logout = async () => {
         dispatch(fetchStart());
+
+        // Demo mode - check if it's a demo token
+        if (
+            token &&
+            (token.includes("demo_token") ||
+                token.includes("test_token") ||
+                token.includes("guest_token"))
+        ) {
+            dispatch(logoutSuccess());
+            toastSuccessNotify("Demo logout successful!");
+            navigate("/");
+            return;
+        }
+
         try {
             await axios.post(`${BASE_URL}users/auth/logout/`, null, {
                 headers: {

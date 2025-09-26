@@ -44,15 +44,34 @@ const Detail = () => {
         slug: "",
     });
     const handleClick = async () => {
-        // Demo mode - simulate like functionality
+        // Demo mode - toggle like functionality
         console.log("Demo mode - Like button clicked for blog:", id);
-        // In demo mode, we don't need to make API calls
-        // Just update the local state to show the like
-        setBlogDetail((prev) => ({
-            ...prev,
-            likes: (prev.likes || 0) + 1,
-            likes_n: [...(prev.likes_n || []), { user_id: "demo_user" }],
-        }));
+
+        setBlogDetail((prev) => {
+            const currentLikes = prev.likes || 0;
+            const currentLikesN = prev.likes_n || [];
+            const isCurrentlyLiked = currentLikesN.some(
+                (like) => like.user_id === "demo_user"
+            );
+
+            if (isCurrentlyLiked) {
+                // Unlike
+                return {
+                    ...prev,
+                    likes: currentLikes - 1,
+                    likes_n: currentLikesN.filter(
+                        (like) => like.user_id !== "demo_user"
+                    ),
+                };
+            } else {
+                // Like
+                return {
+                    ...prev,
+                    likes: currentLikes + 1,
+                    likes_n: [...currentLikesN, { user_id: "demo_user" }],
+                };
+            }
+        });
     };
 
     useEffect(() => {

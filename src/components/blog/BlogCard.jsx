@@ -1,5 +1,5 @@
 import * as React from "react";
-import { memo, useMemo } from "react";
+import { memo, useMemo, useState } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -8,7 +8,6 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Button, Box } from "@mui/material";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import useBlogCalls from "../../hooks/useBlogCalls"; // Not used in demo mode
 import avatar from "../../assets/avatar.png";
@@ -30,14 +29,16 @@ const BlogCard = memo(({ blog }) => {
         publish_date,
         image,
         likes,
-        likes_n,
         id,
         post_views,
     } = blog;
-    const { currentUserId } = useSelector((state) => state.auth);
     // const { postBlogDataLike } = useBlogCalls(); // Not used in demo mode
 
     const navigate = useNavigate();
+
+    // Demo mode - local state for likes
+    const [localLikes, setLocalLikes] = useState(likes || 0);
+    const [isLiked, setIsLiked] = useState(false);
 
     const truncatedContent = useMemo(
         () =>
@@ -47,23 +48,26 @@ const BlogCard = memo(({ blog }) => {
         [content, blog.content]
     );
 
-    const isLiked = useMemo(
-        () =>
-            likes_n?.filter((like) => like.user_id === currentUserId).length >
-            0,
-        [likes_n, currentUserId]
-    );
-
     const handleMore = (id) => {
         navigate(`/detail/${id}`);
     };
 
     const handleLike = async (e) => {
         e.stopPropagation();
-        // Demo mode - just show like action without API call
-        console.log("Demo mode - Like button clicked for blog:", id);
-        // In demo mode, we don't make API calls
-        // The like state is handled by the parent component
+        // Demo mode - toggle like state locally
+        if (isLiked) {
+            setLocalLikes((prev) => prev - 1);
+            setIsLiked(false);
+        } else {
+            setLocalLikes((prev) => prev + 1);
+            setIsLiked(true);
+        }
+        console.log(
+            "Demo mode - Like toggled for blog:",
+            id,
+            "New count:",
+            localLikes
+        );
     };
 
     const formatDate = (dateString) => {
@@ -86,7 +90,7 @@ const BlogCard = memo(({ blog }) => {
                 transition: "all 0.3s ease",
                 "&:hover": {
                     transform: "translateY(-8px)",
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                    boxShadow: "0 20px 40px rgba(99, 102, 241, 0.2)",
                 },
                 borderRadius: 3,
                 overflow: "hidden",
@@ -207,7 +211,7 @@ const BlogCard = memo(({ blog }) => {
                             <FavoriteBorder fontSize="small" />
                         )}
                         <Typography variant="caption" sx={{ ml: 0.5 }}>
-                            {likes || 0}
+                            {localLikes}
                         </Typography>
                     </IconButton>
 
