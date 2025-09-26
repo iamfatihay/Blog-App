@@ -19,8 +19,8 @@ const Register = () => {
     return (
         <Box
             sx={{
-                minHeight: "100vh",
-                background: "linear-gradient(135deg, #764ba2 0%, #667eea 100%)",
+                minHeight: "calc(100vh - 80px)", // Subtract header height
+                background: "linear-gradient(135deg, #ec4899 0%, #6366f1 100%)",
                 display: "flex",
                 alignItems: "center",
                 py: 4,

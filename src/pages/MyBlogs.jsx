@@ -39,7 +39,7 @@ const MyBlogs = () => {
             <Helmet>
                 <title>My Blogs</title>
             </Helmet>
-            <Container sx={{ minHeight: "90vh", py: 4 }}>
+            <Container sx={{ minHeight: "calc(100vh - 160px)", py: 4 }}>
                 <Box sx={{ mb: 4, textAlign: "center" }}>
                     <Typography
                         variant="h4"

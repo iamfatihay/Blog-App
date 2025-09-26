@@ -39,7 +39,7 @@ const About = () => {
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
-                    height: "71.5vh",
+                    height: "calc(100vh - 160px)", // Subtract header height + extra padding
                 }}
             >
                 <CardMedia

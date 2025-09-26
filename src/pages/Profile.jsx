@@ -20,7 +20,7 @@ const Profile = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "74.5vh",
+                height: "calc(100vh - 160px)", // Subtract header height + extra padding
             }}
         >
             <Helmet>

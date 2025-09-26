@@ -13,12 +13,12 @@ const NewBlog = () => {
     return (
         <Grid
             sx={{
-                backgroundImage:
-                    "url(https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)",
+                background:
+                    "linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%), url(https://images.unsplash.com/photo-1661956602868-6ae368943878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
-                opacity: 0.8,
-                height: "77vh",
+                backgroundBlendMode: "overlay",
+                height: "calc(100vh - 120px)", // Subtract header height + extra padding
             }}
         >
             <Helmet>
@@ -32,11 +32,10 @@ const NewBlog = () => {
                     justifyContent: "center",
                     alignItems: "center",
                     gap: 1,
-                    p: 1,
+                    p: 2,
                     m: "auto",
-                    width: "400px",
-                    backgroundColor: "lightgray",
-                    borderRadius: "10px",
+                    maxWidth: "550px",
+                    width: "100%",
                 }}
             >
                 <Avatar

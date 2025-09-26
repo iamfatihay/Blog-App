@@ -19,8 +19,8 @@ const Login = () => {
     return (
         <Box
             sx={{
-                minHeight: "100vh",
-                background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                minHeight: "calc(100vh - 80px)", // Subtract header height
+                background: "linear-gradient(135deg, #6366f1 0%, #ec4899 100%)",
                 display: "flex",
                 alignItems: "center",
                 py: 4,
@@ -104,7 +104,7 @@ const Login = () => {
                                         fontWeight: 700,
                                         mb: 1,
                                         background:
-                                            "linear-gradient(45deg, #0ea5e9, #764ba2)",
+                                            "linear-gradient(45deg, #6366f1, #ec4899)",
                                         backgroundClip: "text",
                                         WebkitBackgroundClip: "text",
                                         WebkitTextFillColor: "transparent",

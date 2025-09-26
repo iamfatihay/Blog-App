@@ -57,7 +57,7 @@ const Dashboard = () => {
     }, [searchTerm]);
 
     return (
-        <Box sx={{ pb: 4, minHeight: "100vh" }}>
+        <Box sx={{ pb: 4, minHeight: "calc(100vh - 120px)" }}>
             <Helmet>
                 <title>Blog Dashboard - Discover Amazing Stories</title>
                 <meta
@@ -69,15 +69,16 @@ const Dashboard = () => {
             {/* Header Section */}
             <Box
                 sx={{
-                    backgroundColor: "#ffffff",
-                    color: "#1f2937",
-                    py: 6,
-                    pt: 8,
+                    background:
+                        "linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%)",
+                    color: "#1e293b",
+                    py: 2,
                     mb: 4,
-                    borderRadius: "0 0 24px 24px",
+                    borderRadius: "0 0 32px 32px",
                     position: "relative",
                     overflow: "hidden",
-                    borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+                    borderBottom: "1px solid rgba(99, 102, 241, 0.1)",
+                    backdropFilter: "blur(10px)",
                 }}
             >
                 <Container
@@ -92,7 +93,7 @@ const Dashboard = () => {
                             textAlign: "center",
                             mb: 2,
                             background:
-                                "linear-gradient(45deg, #0ea5e9, #764ba2)",
+                                "linear-gradient(45deg, #6366f1, #ec4899)",
                             backgroundClip: "text",
                             WebkitBackgroundClip: "text",
                             WebkitTextFillColor: "transparent",
@@ -133,12 +134,19 @@ const Dashboard = () => {
                             minWidth: 300,
                             display: "flex",
                             alignItems: "center",
-                            backgroundColor: "white",
-                            borderRadius: 2,
+                            backgroundColor: "rgba(255, 255, 255, 0.9)",
+                            backdropFilter: "blur(10px)",
+                            borderRadius: 3,
                             px: 2,
                             py: 1,
-                            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                            border: "1px solid rgba(0,0,0,0.05)",
+                            boxShadow: "0 4px 20px rgba(99, 102, 241, 0.1)",
+                            border: "1px solid rgba(99, 102, 241, 0.1)",
+                            transition: "all 0.3s ease",
+                            "&:hover": {
+                                boxShadow:
+                                    "0 8px 30px rgba(99, 102, 241, 0.15)",
+                                border: "1px solid rgba(99, 102, 241, 0.2)",
+                            },
                         }}
                     >
                         <SearchIcon sx={{ color: "primary.main", mr: 1 }} />
