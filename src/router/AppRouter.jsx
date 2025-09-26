@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 import NavBar from "../components/NavBar";
@@ -16,6 +16,26 @@ import MyBlogs from "../pages/MyBlogs";
 
 const Router = () => {
     const { currentUser } = useSelector((state) => state.auth);
+    const [headerHeight, setHeaderHeight] = useState(80); // Default fallback
+
+    useEffect(() => {
+        const updateHeaderHeight = () => {
+            const navbar = document.querySelector(".MuiAppBar-root");
+            if (navbar) {
+                setHeaderHeight(navbar.offsetHeight);
+            }
+        };
+
+        // Initial measurement
+        updateHeaderHeight();
+
+        // Update on window resize
+        window.addEventListener("resize", updateHeaderHeight);
+
+        // Cleanup
+        return () => window.removeEventListener("resize", updateHeaderHeight);
+    }, []);
+
     return (
         <BrowserRouter
             future={{
@@ -24,7 +44,14 @@ const Router = () => {
             }}
         >
             <NavBar />
-            <Box component="main" sx={{ flexGrow: 1, pt: 10 }}>
+            <Box
+                component="main"
+                sx={{
+                    flexGrow: 1,
+                    pt: `${headerHeight + 60}px`, // Extra padding for better spacing
+                    minHeight: `calc(100vh - ${headerHeight}px)`,
+                }}
+            >
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/login" element={<Login />} />
