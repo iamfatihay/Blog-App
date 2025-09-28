@@ -62,12 +62,7 @@ const BlogCard = memo(({ blog }) => {
             setLocalLikes((prev) => prev + 1);
             setIsLiked(true);
         }
-        console.log(
-            "Demo mode - Like toggled for blog:",
-            id,
-            "New count:",
-            localLikes
-        );
+        // Demo mode - like toggled
     };
 
     const formatDate = (dateString) => {

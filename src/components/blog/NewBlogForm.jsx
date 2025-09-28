@@ -39,7 +39,6 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
 
     useEffect(() => {
         // Demo mode - no API calls needed
-        console.log("Demo mode - NewBlogForm loaded with demo categories");
     }, []);
     const [selectedStatus, setSelectedStatus] = useState(
         values.status === "d" ? "draft" : "published"

@@ -69,10 +69,6 @@ const NewBlog = () => {
                     validationSchema={blogSchema}
                     onSubmit={(values, actions) => {
                         // Demo mode - just show success message
-                        console.log(
-                            "Demo mode - Blog would be created:",
-                            values
-                        );
                         alert(
                             "Demo mode: Blog post created successfully! (This is just a demo)"
                         );

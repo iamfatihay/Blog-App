@@ -45,17 +45,15 @@ export default function UpdateModal({
 
     useEffect(() => {
         // Demo mode - no API calls needed
-        console.log("Demo mode - UpdateModal loaded with demo categories");
     }, []);
 
     const handleChange = (e) => {
-        // console.log(e.target.name);
+        // Handle input change
         setInfo({ ...info, [e.target.name]: e.target.value });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         // Demo mode - just show success message
-        console.log("Demo mode - Blog would be updated:", info);
         alert(
             "Demo mode: Blog post updated successfully! (This is just a demo)"
         );

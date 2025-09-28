@@ -11,7 +11,6 @@ const DeleteModal = ({ open, handleCloseDelete, id }) => {
 
     const handleDelete = () => {
         // Demo mode - just show success message
-        console.log("Demo mode - Blog would be deleted:", id);
         alert(
             "Demo mode: Blog post deleted successfully! (This is just a demo)"
         );

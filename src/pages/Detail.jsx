@@ -45,7 +45,6 @@ const Detail = () => {
     });
     const handleClick = async () => {
         // Demo mode - toggle like functionality
-        console.log("Demo mode - Like button clicked for blog:", id);
 
         setBlogDetail((prev) => {
             const currentLikes = prev.likes || 0;

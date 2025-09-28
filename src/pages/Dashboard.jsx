@@ -23,7 +23,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         // Demo mode - directly use demo data without API calls
-        console.log("Running in demo mode - using demo data");
 
         const handleScroll = () => {
             if (window.scrollY > 200) {

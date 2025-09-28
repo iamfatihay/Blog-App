@@ -25,7 +25,6 @@ const CommentForm = ({ setBlogDetail, blogDetail, id }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Demo mode - just show success message
-        console.log("Demo mode - Comment would be added:", commentData);
         alert("Demo mode: Comment added successfully! (This is just a demo)");
         setComment("");
     };
