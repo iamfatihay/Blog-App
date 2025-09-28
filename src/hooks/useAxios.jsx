@@ -7,15 +7,29 @@ const useAxios = () => {
 
     // Use HTTPS to avoid CORS issues
     const baseURL =
-        process.env.REACT_APP_BASE_URL || "https://fullstack.clarusway.com";
+        process.env.REACT_APP_BASE_URL ||
+        "https://35111.fullstack.clarusway.com/";
 
     const axiosWithToken = axios.create({
         baseURL: baseURL,
         headers: { Authorization: `Token ${token}` },
+        withCredentials: true, // CORS için credentials ekle
     });
+
     const axiosWithPublic = axios.create({
         baseURL: baseURL,
+        withCredentials: true, // CORS için credentials ekle
     });
+
+    // CORS hataları için interceptor ekle
+    axiosWithToken.interceptors.response.use(
+        (response) => response,
+        (error) => {
+            // CORS veya diğer hataları sessizce işle
+            return Promise.reject(error);
+        }
+    );
+
     return { axiosWithToken, axiosWithPublic };
 };
 

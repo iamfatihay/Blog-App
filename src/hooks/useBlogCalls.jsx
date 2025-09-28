@@ -18,7 +18,6 @@ const useBlogCalls = () => {
                 requestUrl += `/${id}/`;
             }
             const { data } = await axiosWithToken.get(requestUrl);
-            console.log(data);
             dispatch(getSucces({ data, url }));
         } catch (error) {
             dispatch(fetchFail());
@@ -30,7 +29,6 @@ const useBlogCalls = () => {
             const { data } = await axiosWithToken.get(
                 `api/blogs/?author=${currentUserId}`
             );
-            console.log(data);
             dispatch(getSucces({ data, url: "blogs" }));
         } catch (error) {
             dispatch(fetchFail());
@@ -41,7 +39,6 @@ const useBlogCalls = () => {
         dispatch(fetchStart());
         try {
             const response = await axiosWithToken.get(`api/blogs/${id}/`);
-            console.log(response.data);
             dispatch(getSucces({ data: response.data }));
             return response.data;
         } catch (error) {
@@ -53,11 +50,9 @@ const useBlogCalls = () => {
         dispatch(fetchStart());
         try {
             const { data } = await axiosWithPublic.get(`api/${url}/`);
-            console.log(data);
             dispatch(getSucces({ data, url }));
             return data;
         } catch (error) {
-            console.log("API Error:", error.message);
             // Don't dispatch fetchFail, let demo data handle it
             throw error; // Re-throw to allow caller to handle
         }
@@ -83,7 +78,6 @@ const useBlogCalls = () => {
                 requestUrl += `${id}/`;
             }
             const { data } = await axiosWithToken.post(requestUrl, info);
-            console.log(data);
             getBlogData(url);
             toastSuccessNotify(`successfuly performed!`);
         } catch (error) {
@@ -96,11 +90,9 @@ const useBlogCalls = () => {
         dispatch(fetchStart());
         try {
             const { data } = await axiosWithToken.post(`api/${url}/${id}/`);
-            console.log(data);
             getBlogData("blogs");
             return data;
         } catch (error) {
-            console.log("Like API Error:", error.message);
             dispatch(fetchFail());
             throw error; // Re-throw to allow caller to handle
         }
