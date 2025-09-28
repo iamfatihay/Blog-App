@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { PersistGate } from "redux-persist/integration/react";
 import { CssBaseline } from "@mui/material";
 import ErrorBoundary from "./components/ErrorBoundary";
+import AuthProvider from "./components/AuthProvider";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
@@ -105,9 +106,11 @@ function App() {
                 <CssBaseline />
                 <Provider store={store}>
                     <PersistGate loading={null} persistor={persistor}>
-                        <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50">
-                            <AppRouter />
-                        </div>
+                        <AuthProvider>
+                            <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-pink-50">
+                                <AppRouter />
+                            </div>
+                        </AuthProvider>
                     </PersistGate>
                 </Provider>
                 <ToastContainer
