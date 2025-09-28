@@ -21,12 +21,10 @@ const LoginForm = ({
     setFieldValue,
 }) => {
     const demoCredentials = [
-        { email: "demo@example.com", password: "demo123", label: "Demo User" },
-        { email: "test@example.com", password: "test123", label: "Test User" },
         {
-            email: "guest@example.com",
-            password: "guest123",
-            label: "Guest User",
+            email: "test@example.com",
+            password: "test123",
+            label: "🔥 Firebase Test User",
         },
     ];
 
@@ -38,14 +36,21 @@ const LoginForm = ({
     return (
         <Form>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                {/* Demo Credentials Section */}
+                {/* Test Credentials Section */}
                 <MuiBox sx={{ mb: 2 }}>
                     <Typography
                         variant="body2"
                         color="text.secondary"
                         sx={{ mb: 1, fontWeight: 500 }}
                     >
-                        🚀 Demo Credentials (Click to auto-fill):
+                        🚀 Test Credentials (Click to auto-fill):
+                    </Typography>
+                    <Typography
+                        variant="caption"
+                        color="primary.main"
+                        sx={{ mb: 1, display: "block", fontWeight: 600 }}
+                    >
+                        🔥 Firebase Authentication Active
                     </Typography>
                     <Box sx={{ display: "flex", gap: 1, flexWrap: "wrap" }}>
                         {demoCredentials.map((cred, index) => (

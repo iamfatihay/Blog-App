@@ -116,9 +116,17 @@ const Register = () => {
                                 <Typography
                                     variant="body1"
                                     color="text.secondary"
+                                    sx={{ mb: 1 }}
                                 >
                                     Create your account to start writing amazing
                                     stories
+                                </Typography>
+                                <Typography
+                                    variant="caption"
+                                    color="primary.main"
+                                    sx={{ fontWeight: 600 }}
+                                >
+                                    🔥 Firebase Authentication Active
                                 </Typography>
                             </Box>
 
@@ -136,7 +144,6 @@ const Register = () => {
                                 validationSchema={registerSchema}
                                 onSubmit={(values, actions) => {
                                     register(values);
-                                    console.log(values);
                                     actions.resetForm();
                                 }}
                                 component={(props) => (
