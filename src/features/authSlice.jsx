@@ -1,62 +1,67 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
-  name: "auth",
+    name: "auth",
 
-  initialState: {
-    currentUser: null,
-    currentUserId: null,
-    loading: false,
-    error: false,
-    image: "",
-    first_name: "",
-    email: "",
-    bio: "",
-    token: null,
-  },
-  reducers: {
-    fetchStart: state => {
-      state.loading = true;
-      state.error = false;
+    initialState: {
+        currentUser: null,
+        currentUserId: null,
+        loading: false,
+        error: false,
+        image: "",
+        first_name: "",
+        email: "",
+        bio: "",
+        token: null,
     },
-    loginSuccess: (state, { payload }) => {
-      state.loading = false;
-      state.currentUser = payload?.user?.username;
-      state.currentUserId = payload?.user?.id;
-      state.token = payload?.key;
+    reducers: {
+        fetchStart: (state) => {
+            state.loading = true;
+            state.error = false;
+        },
+        loginSuccess: (state, { payload }) => {
+            state.loading = false;
+            state.currentUser = payload?.user?.username;
+            state.currentUserId = payload?.user?.id;
+            state.token = payload?.key;
+        },
+        profileSuccess: (state, { payload }) => {
+            state.image = payload?.user?.image;
+            state.first_name = payload?.user?.first_name;
+            state.email = payload?.user?.email;
+            state.bio = payload?.user?.bio;
+        },
+        // prop drilling
+        logoutSuccess: (state) => {
+            state.loading = false;
+            state.currentUser = null;
+            state.currentUserId = null;
+            state.token = null;
+            state.image = "";
+            state.first_name = "";
+            state.email = "";
+            state.bio = "";
+            state.error = false;
+        },
+        registerSuccess: (state, { payload }) => {
+            state.loading = false;
+            state.currentUser = payload?.username;
+            state.token = payload?.token;
+            state.error = false;
+        },
+        fetchFail: (state) => {
+            state.loading = false;
+            state.error = true;
+        },
     },
-    profileSuccess: (state, { payload }) => {
-      state.image = payload?.user?.image;
-      state.first_name = payload?.user?.first_name;
-      state.email = payload?.user?.email;
-      state.bio = payload?.user?.bio;
-    },
-    // prop drilling
-    logoutSuccess: state => {
-      state.loading = false;
-      state.currentUser = null;
-      state.token = null;
-    },
-    registerSuccess: (state, { payload }) => {
-      state.loading = false;
-      state.currentUser = payload?.username;
-      state.token = payload?.token;
-      state.error = false;
-    },
-    fetchFail: state => {
-      state.loading = false;
-      state.error = true;
-    },
-  },
 });
 
 export const {
-  fetchStart,
-  loginSuccess,
-  logoutSuccess,
-  registerSuccess,
-  fetchFail,
-  profileSuccess,
+    fetchStart,
+    loginSuccess,
+    logoutSuccess,
+    registerSuccess,
+    fetchFail,
+    profileSuccess,
 } = authSlice.actions;
 export default authSlice.reducer;
-
