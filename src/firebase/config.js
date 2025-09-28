@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
-// Firebase konfigürasyonu - GERÇEK PROJE
+// Firebase configuration - REAL PROJECT
 const firebaseConfig = {
     apiKey: "AIzaSyBsFeDWgcz8pw8pQClZvOacwujPc74GijM",
     authDomain: "blog-app-f63f6.firebaseapp.com",
@@ -14,13 +14,13 @@ const firebaseConfig = {
     measurementId: "G-8G6ER3Q9WS",
 };
 
-// Demo modu kapalı - gerçek Firebase kullanılıyor
+// Demo mode disabled - real Firebase is used
 export const isDemoMode = false;
 
-// Firebase'i başlat
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Auth, Firestore ve Analytics servislerini al
+// Get Auth, Firestore and Analytics services
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const analytics = getAnalytics(app);

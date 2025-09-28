@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth, isDemoMode } from "./config";
 
-// Demo modu için geçici auth sistemi (artık kullanılmıyor - gerçek Firebase kullanılıyor)
+// Temporary auth system for demo mode (no longer used - real Firebase is used)
 const DEMO_USERS = {
     "demo@example.com": {
         password: "demo123",
@@ -18,7 +18,7 @@ const DEMO_USERS = {
             first_name: "Demo",
             last_name: "User",
             image: null,
-            bio: "Demo kullanıcı hesabı (Local)",
+            bio: "Demo user account (Local)",
             token: "demo-token-123",
         },
     },
@@ -31,18 +31,18 @@ const DEMO_USERS = {
             first_name: "Firebase",
             last_name: "Test",
             image: null,
-            bio: "Firebase Test kullanıcı hesabı",
+            bio: "Firebase Test user account",
             token: "firebase-test-token",
         },
     },
 };
 
-// Demo modu artık config'den alınıyor
+// Demo mode is now taken from config
 
-// Kullanıcı kaydı
+// User registration
 export const registerUser = async (email, password, userData) => {
     if (isDemoMode) {
-        // Demo modu - geçici kayıt
+        // Demo mode - temporary registration
         return {
             success: true,
             user: {
@@ -66,7 +66,7 @@ export const registerUser = async (email, password, userData) => {
         );
         const user = userCredential.user;
 
-        // Kullanıcı profilini güncelle
+        // Update user profile
         await updateProfile(user, {
             displayName: userData.username,
             photoURL: userData.image || null,
@@ -93,10 +93,10 @@ export const registerUser = async (email, password, userData) => {
     }
 };
 
-// Kullanıcı girişi
+// User login
 export const loginUser = async (email, password) => {
     if (isDemoMode) {
-        // Demo modu - geçici giriş
+        // Demo mode - temporary login
         const demoUser = DEMO_USERS[email];
         if (demoUser && demoUser.password === password) {
             return {
@@ -106,7 +106,7 @@ export const loginUser = async (email, password) => {
         } else {
             return {
                 success: false,
-                error: "Geçersiz email veya şifre",
+                error: "Invalid email or password",
             };
         }
     }
@@ -119,7 +119,7 @@ export const loginUser = async (email, password) => {
         );
         const user = userCredential.user;
 
-        // Token almak için
+        // Get token
         const token = await user.getIdToken();
 
         return {
@@ -143,10 +143,10 @@ export const loginUser = async (email, password) => {
     }
 };
 
-// Kullanıcı çıkışı
+// User logout
 export const logoutUser = async () => {
     if (isDemoMode) {
-        // Demo modu - geçici çıkış
+        // Demo mode - temporary logout
         return { success: true };
     }
 
@@ -161,19 +161,19 @@ export const logoutUser = async () => {
     }
 };
 
-// Auth state değişikliklerini dinle
+// Listen to auth state changes
 export const onAuthStateChange = (callback) => {
     if (isDemoMode) {
-        // Demo modu - auth state dinlemiyor
+        // Demo mode - not listening to auth state
         return () => {};
     }
     return onAuthStateChanged(auth, callback);
 };
 
-// Mevcut kullanıcıyı al
+// Get current user
 export const getCurrentUser = () => {
     if (isDemoMode) {
-        // Demo modu - null döndür
+        // Demo mode - return null
         return null;
     }
     return auth.currentUser;

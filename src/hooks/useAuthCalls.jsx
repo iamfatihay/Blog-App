@@ -14,9 +14,9 @@ import {
 const useAuthCall = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    // const { token } = useSelector((state) => state.auth); // Artık kullanılmıyor
+    // const { token } = useSelector((state) => state.auth); // No longer used
 
-    // Firebase kullanıyoruz, API URL'ye ihtiyaç yok
+    // Using Firebase, no need for API URL
 
     const login = async (userInfo) => {
         dispatch(fetchStart());
@@ -31,15 +31,15 @@ const useAuthCall = () => {
                 };
                 dispatch(loginSuccess(data));
                 dispatch(profileSuccess(data));
-                toastSuccessNotify("Giriş başarılı!");
+                toastSuccessNotify("Login successful!");
                 navigate("/");
             } else {
                 dispatch(fetchFail());
-                toastErrorNotify(result.error || "Giriş yapılamadı");
+                toastErrorNotify(result.error || "Login failed");
             }
         } catch (error) {
             dispatch(fetchFail());
-            toastErrorNotify("Giriş yapılamadı");
+            toastErrorNotify("Login failed");
         }
     };
 
@@ -51,18 +51,18 @@ const useAuthCall = () => {
 
             if (result.success) {
                 dispatch(logoutSuccess());
-                toastSuccessNotify("Çıkış başarılı!");
+                toastSuccessNotify("Logout successful!");
                 navigate("/");
             } else {
-                // Firebase logout hatası olsa bile local logout yap
+                // Perform local logout even if Firebase logout fails
                 dispatch(logoutSuccess());
-                toastSuccessNotify("Çıkış yapıldı");
+                toastSuccessNotify("Logged out");
                 navigate("/");
             }
         } catch (error) {
-            // Hata durumunda bile logout yap
+            // Perform logout even on error
             dispatch(logoutSuccess());
-            toastSuccessNotify("Çıkış yapıldı");
+            toastSuccessNotify("Logged out");
             navigate("/");
         }
     };
@@ -84,15 +84,15 @@ const useAuthCall = () => {
                 };
                 dispatch(registerSuccess(data));
                 dispatch(profileSuccess(data));
-                toastSuccessNotify("Kayıt başarılı!");
+                toastSuccessNotify("Registration successful!");
                 navigate("/login");
             } else {
                 dispatch(fetchFail());
-                toastErrorNotify(result.error || "Kayıt yapılamadı");
+                toastErrorNotify(result.error || "Registration failed");
             }
         } catch (error) {
             dispatch(fetchFail());
-            toastErrorNotify("Kayıt yapılamadı");
+            toastErrorNotify("Registration failed");
         }
     };
 

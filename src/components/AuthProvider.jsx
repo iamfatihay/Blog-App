@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChange((user) => {
             if (user) {
-                // Kullanıcı giriş yapmış
+                // User logged in
                 const userData = {
                     key: user.accessToken || user.uid,
                     user: {
@@ -31,7 +31,7 @@ const AuthProvider = ({ children }) => {
                 dispatch(loginSuccess(userData));
                 dispatch(profileSuccess(userData));
             } else {
-                // Kullanıcı çıkış yapmış
+                // User logged out
                 dispatch(logoutSuccess());
             }
         });
